@@ -1,4 +1,4 @@
-package iftm.extensao.model.facede;
+package iftm.extensao.model.facede.ws;
 
 import java.util.ArrayList;
 import java.util.List;

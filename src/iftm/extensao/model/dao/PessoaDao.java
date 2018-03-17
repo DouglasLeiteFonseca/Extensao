@@ -18,4 +18,11 @@ public class PessoaDao {
 		return query.getResultList();
 	}
 	
+	public Pessoa getPessoaId(int id) {
+		return entityManager.find(Pessoa.class, id);
+	}
+	public void salvarPessoa(Pessoa pessoa) {
+		entityManager.persist(pessoa);
+	}
+	
 }
