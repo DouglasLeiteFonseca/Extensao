@@ -6,7 +6,10 @@ import javax.inject.Inject;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -37,5 +40,21 @@ public class PessoaFacede {
 		p.setParticipacoes(null);
 		p.setProjetosAutor(null);
 		return p;
+	}
+	
+	@DELETE
+	@Path(value="/{id}")
+	public void excluirPessoa(@PathParam("id") Integer id) {
+		pessoaDao.excluirPessoa(id);
+	}
+	
+	@POST
+	public void salvarPessoa(Pessoa pessoa) {
+		pessoaDao.salvarPessoa(pessoa);
+	}
+	
+	@PUT
+	public void atualizarPessoa(Pessoa pessoa) {
+		pessoaDao.atualizarPessoa(pessoa);
 	}
 }

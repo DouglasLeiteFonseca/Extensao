@@ -3,6 +3,7 @@ package iftm.extensao.model.dao;
 import java.util.List;
 
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -21,7 +22,17 @@ public class PessoaDao {
 	public Pessoa getPessoaId(int id) {
 		return entityManager.find(Pessoa.class, id);
 	}
+	@Transactional
 	public void salvarPessoa(Pessoa pessoa) {
+		entityManager.persist(pessoa);
+	}
+	@Transactional
+	public void excluirPessoa(Integer id) {
+		entityManager.remove(entityManager.getReference(Pessoa.class, id));
+	}
+	@Transactional
+	public void atualizarPessoa(Pessoa pessoa) {
+		pessoa = entityManager.merge(pessoa);
 		entityManager.persist(pessoa);
 	}
 	
