@@ -18,6 +18,10 @@ public class PessoaDao {
 		Query query = entityManager.createQuery("from Pessoa");
 		return query.getResultList();
 	}
+	public List<Pessoa> getPessoasBusca(String nome){
+		Query query = entityManager.createQuery("from Pessoa where nome like '%"+nome+"%'");
+		return query.getResultList();
+	}
 	
 	public Pessoa getPessoaId(int id) {
 		return entityManager.find(Pessoa.class, id);

@@ -34,6 +34,16 @@ public class PessoaFacede {
 		return pessoas;
 	}
 	@GET
+	@Path(value="/busca/{nome}")
+	public List<Pessoa> getPessoasBusca(@PathParam("nome") String nome){
+		List<Pessoa>pessoas = pessoaDao.getPessoasBusca(nome);
+		for(Pessoa p:pessoas) {
+			p.setParticipacoes(null);
+			p.setProjetosAutor(null);
+		}
+		return pessoas;
+	}
+	@GET
 	@Path(value="/{id}")
 	public Pessoa getPessoa(@PathParam("id") Integer id) {
 		Pessoa p = pessoaDao.getPessoaId(id);
